@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/itemList">
+
+    <fragment
+        android:id="@+id/itemList"
+        android:name="com.ubaya.a160419062_ubayalibrary.view.BookListFragment"
+        android:label="fragment_book_list"
+        tools:layout="@layout/fragment_book_list" >
+        <action
+            android:id="@+id/actionToBookDetail"
+            app:destination="@id/bookDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDetailFragment"
+        android:name="com.ubaya.a160419062_ubayalibrary.view.BookDetailFragment"
+        android:label="fragment_book_detail"
+        tools:layout="@layout/fragment_book_detail" >
+        <argument android:name="bookID"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="com.ubaya.a160419062_ubayalibrary.view.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/itemFav"
+        android:name="com.ubaya.a160419062_ubayalibrary.view.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/actionFavToBookDetail"
+            app:destination="@id/bookDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemBlack"
+        android:name="com.ubaya.a160419062_ubayalibrary.view.BlacklistFragment"
+        android:label="fragment_blacklist"
+        tools:layout="@layout/fragment_blacklist" >
+        <action
+            android:id="@+id/actionBlackToBookDetail"
+            app:destination="@id/bookDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemLike"
+        android:name="com.ubaya.a160419062_ubayalibrary.view.LikeFragment"
+        android:label="fragment_like"
+        tools:layout="@layout/fragment_like" >
+        <action
+            android:id="@+id/actionLikeToBookDetail"
+            app:destination="@id/bookDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemWish"
+        android:name="com.ubaya.a160419062_ubayalibrary.view.WishlistFragment"
+        android:label="fragment_wishlist"
+        tools:layout="@layout/fragment_wishlist" >
+        <action
+            android:id="@+id/actionWishToBookDetail"
+            app:destination="@id/bookDetailFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemSetting"
+        android:name="com.ubaya.a160419062_ubayalibrary.view.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+</navigation>

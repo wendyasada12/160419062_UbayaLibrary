@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <item
+        android:id="@+id/itemFav"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Favorite"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemLike"
+        android:icon="@drawable/ic_baseline_thumb_up_24"
+        android:title="Like"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemWish"
+        android:icon="@drawable/ic_baseline_bookmark_24"
+        android:title="WIshlist"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemBlack"
+        android:icon="@drawable/ic_baseline_not_interested_24"
+        android:title="Blacklist"
+        app:showAsAction="always" />
+</menu>
