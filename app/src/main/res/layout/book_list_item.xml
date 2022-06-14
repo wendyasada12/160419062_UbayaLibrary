@@ -40,6 +40,8 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
+                    android:imageUrl="@{books.image}"
+                    android:progressBar="@{progressLoadingBookPhoto}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -50,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="ID"
+                    android:text="@{books.id}"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imageBookPhoto"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +61,7 @@
                     android:id="@+id/textBName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Book Name"
+                    android:text="@{books.name}"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/textID"
                     app:layout_constraintTop_toBottomOf="@+id/textID" />
@@ -68,7 +70,7 @@
                     android:id="@+id/textAuthorName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Author Name"
+                    android:text="@{books.author}"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/textBName"
                     app:layout_constraintTop_toBottomOf="@+id/textBName" />
@@ -81,6 +83,8 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     android:text="Detail"
+                    android:tag="@{books.id}"
+                    android:onClick="@{listener::onButtonDetailClick}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
