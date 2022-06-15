@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -52,6 +53,8 @@ class BookDetailFragment : Fragment() {
                 viewModel.updateBlack(bookID)
             }
         }
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Book Detail"
     }
 
     private fun observeViewModel() {

@@ -19,7 +19,10 @@ class BookWishAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<Book
         val inflater = LayoutInflater.from(parent.context)
         val view = DataBindingUtil.inflate<BookListItemBinding>(inflater,R.layout.book_list_item, parent, false)
         return BookWishAdapter.BookViewHolder(view)
+
     }
+
+
 
     override fun onBindViewHolder(holder: BookWishAdapter.BookViewHolder, position: Int) {
         holder.view.books = bookList[position]

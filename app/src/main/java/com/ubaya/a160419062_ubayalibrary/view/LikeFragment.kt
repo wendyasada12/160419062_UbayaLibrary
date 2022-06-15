@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419062_ubayalibrary.R
@@ -38,6 +39,7 @@ class LikeFragment : Fragment() {
             viewModel.refresh()
             refreshLayoutLike.isRefreshing = false
         }
+        (activity as AppCompatActivity).supportActionBar?.title = "Book Liked Lists"
     }
 
     private fun observeViewModel() {

@@ -1,10 +1,12 @@
 package com.ubaya.a160419062_ubayalibrary.view
 
+import android.app.ActionBar
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419062_ubayalibrary.R
@@ -20,6 +22,8 @@ class BlacklistFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_blacklist, container, false)
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,6 +41,8 @@ class BlacklistFragment : Fragment() {
             viewModel.refresh()
             refreshLayoutBlacklist.isRefreshing = false
         }
+        (activity as AppCompatActivity).supportActionBar?.title = "Book Black Lists"
+
     }
 
     private fun observeViewModel() {
