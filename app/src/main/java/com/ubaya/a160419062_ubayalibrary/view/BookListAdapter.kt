@@ -23,6 +23,7 @@ class BookListAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<Book
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         holder.view.books = bookList[position]
+        holder.view.listener = this
 //        val book = bookList[position]
 //        with (holder.view){
 //            textID.text = book.id
@@ -42,15 +43,16 @@ class BookListAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<Book
 //        }
     }
 
+    override fun onButtonDetailClick(v: View) {
+        val action = BookListFragmentDirections.actionToBookDetail(v.tag.toString())
+        Navigation.findNavController(v).navigate(action)
+    }
+
     override fun getItemCount() = bookList.size
 
     fun updateBookList(newBookList: ArrayList<Book>){
         bookList.clear()
         bookList.addAll(newBookList)
         notifyDataSetChanged()
-    }
-
-    override fun onButtonDetailClick(v: View) {
-        TODO("Not yet implemented")
     }
 }

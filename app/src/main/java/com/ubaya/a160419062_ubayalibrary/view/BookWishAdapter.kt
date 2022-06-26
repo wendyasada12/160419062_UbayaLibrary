@@ -26,6 +26,7 @@ class BookWishAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<Book
 
     override fun onBindViewHolder(holder: BookWishAdapter.BookViewHolder, position: Int) {
         holder.view.books = bookList[position]
+        holder.view.listener = this
 //        val book = bookList[position]
 //        with (holder.view){
 //            textID.text = book.id
@@ -53,6 +54,7 @@ class BookWishAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<Book
     }
 
     override fun onButtonDetailClick(v: View) {
-        TODO("Not yet implemented")
+        val action = WishlistFragmentDirections.actionWishToBookDetail(v.tag.toString())
+        Navigation.findNavController(v).navigate(action)
     }
 }

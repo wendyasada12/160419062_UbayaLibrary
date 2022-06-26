@@ -23,6 +23,7 @@ class BookBlacklistAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: BookBlacklistAdapter.BookViewHolder, position: Int) {
         holder.view.books = bookList[position]
+        holder.view.listener = this
 //        val book = bookList[position]
 //        with (holder.view){
 //            textID.text = book.id
@@ -50,6 +51,7 @@ class BookBlacklistAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter
     }
 
     override fun onButtonDetailClick(v: View) {
-        TODO("Not yet implemented")
+        val action = BlacklistFragmentDirections.actionBlackToBookDetail(v.tag.toString())
+        Navigation.findNavController(v).navigate(action)
     }
 }
