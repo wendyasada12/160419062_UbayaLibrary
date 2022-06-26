@@ -27,7 +27,7 @@ class BlackListViewModel(application: Application) : AndroidViewModel(applicatio
         bookBlackLoadErrorLD.value = false
         loadingBlackLD.value = true
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/ANMP/bookblacklistlist.php"
+        val url = "https://ubaya.fun/native/160419062/ANMP/bookblacklistlist.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {

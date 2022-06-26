@@ -26,7 +26,7 @@ class FavListViewModel(application: Application) : AndroidViewModel(application)
         bookFavLoadErrorLD.value = false
         loadingFavLD.value = true
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/ANMP/bookfavlist.php"
+        val url = "https://ubaya.fun/native/160419062/ANMP/bookfavlist.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {

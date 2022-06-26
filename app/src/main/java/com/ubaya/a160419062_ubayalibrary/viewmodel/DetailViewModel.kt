@@ -25,7 +25,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     var black = MutableLiveData<Boolean>()
     fun fetch(bookID: String?) {
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/ANMP/book.php?id=$bookID"
+        val url = "https://ubaya.fun/native/160419062/ANMP/book.php?id=$bookID"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
@@ -45,7 +45,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
 
     fun updateFav(bookID: String?){
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/ANMP/bookfav.php"
+        val url = "https://ubaya.fun/native/160419062/ANMP/bookfav.php"
         val stringRequest = object : StringRequest(
             Request.Method.POST,
             url,
@@ -72,7 +72,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     }
     fun updateLike(bookID: String?){
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/ANMP/booklike.php"
+        val url = "https://ubaya.fun/native/160419062/ANMP/booklike.php"
         val stringRequest = object : StringRequest(
             Request.Method.POST,
             url,
@@ -99,7 +99,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     }
     fun updatewish(bookID: String?){
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/ANMP/bookwishlist.php"
+        val url = "https://ubaya.fun/native/160419062/ANMP/bookwishlist.php"
         val stringRequest = object : StringRequest(
             Request.Method.POST,
             url,
@@ -126,7 +126,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     }
     fun updateBlack(bookID: String?){
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/ANMP/bookblacklist.php"
+        val url = "https://ubaya.fun/native/160419062/ANMP/bookblacklist.php"
         val stringRequest = object : StringRequest(
             Request.Method.POST,
             url,

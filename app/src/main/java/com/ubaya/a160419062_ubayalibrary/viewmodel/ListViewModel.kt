@@ -26,7 +26,7 @@ class ListViewModel(application: Application) :AndroidViewModel(application) {
         bookLoadErrorLD.value = false
         loadingLD.value = true
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/ANMP/book.php"
+        val url = "https://ubaya.fun/native/160419062/ANMP/book.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {

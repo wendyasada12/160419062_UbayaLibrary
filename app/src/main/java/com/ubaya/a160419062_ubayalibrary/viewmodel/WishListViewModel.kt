@@ -26,7 +26,7 @@ class WishListViewModel(application: Application) : AndroidViewModel(application
         bookWishLoadErrorLD.value = false
         loadingWishLD.value = true
         queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/ANMP/booklikelist.php"
+        val url = "https://ubaya.fun/native/160419062/ANMP/booklikelist.php"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             {
