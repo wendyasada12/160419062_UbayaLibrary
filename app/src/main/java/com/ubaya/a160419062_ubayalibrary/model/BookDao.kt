@@ -16,4 +16,5 @@ interface BookDao {
 
     @Delete
     suspend fun deleteBooks(tenant: Book)
+
 }

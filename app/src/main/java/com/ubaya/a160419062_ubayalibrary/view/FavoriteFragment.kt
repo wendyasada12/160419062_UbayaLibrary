@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419062_ubayalibrary.R
@@ -43,9 +44,12 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.bookFavLiveData.observe(viewLifecycleOwner) {
+        viewModel.bookFavLiveData.observe(viewLifecycleOwner, Observer {
             bookListAdapter.updateBookList(it)
-        }
+        })
+//        viewModel.bookFavLiveData.observe(viewLifecycleOwner) {
+//            bookListAdapter.updateBookList(it)
+//        }
         viewModel.bookFavLoadErrorLD.observe(viewLifecycleOwner) {
             textErrorFav.visibility = if (it) View.VISIBLE else View.GONE
         }

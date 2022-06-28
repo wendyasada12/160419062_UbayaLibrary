@@ -54,10 +54,10 @@ class BookDetailFragment : Fragment() {
             book?.let {
                 textBookName.setText(it.name)
                 textAuthor.setText(it.author)
-                textDesc.setText(it.desc)
+                textDesc.setText(it.description)
                 textCategory.setText(it.category)
-                textPages.setText(it.Pages)
-                textLanguage.setText(it.Language)
+                textPages.setText(it.pages)
+                textLanguage.setText(it.language)
                 textDateRelease.setText(it.date)
                 textPublisher.setText(it.publisher)
                 imageBookDetail.loadImage(book.image, progressBookPhotoDetail)

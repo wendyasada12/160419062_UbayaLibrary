@@ -13,8 +13,8 @@ data class Book(
     var name: String?,
     @ColumnInfo(name = "category")
     var category: String?,
-    @ColumnInfo(name = "desc")
-    var desc: String?,
+    @ColumnInfo(name = "description")
+    var description: String?,
     @ColumnInfo(name = "author")
     var author: String?,
     @ColumnInfo(name = "pages")
@@ -26,8 +26,15 @@ data class Book(
     @ColumnInfo(name = "date")
     var date: String?,
     @ColumnInfo(name = "publisher")
-    var publisher: String
-
+    var publisher: String?,
+    @ColumnInfo(name = "isLike")
+    var isLike: Boolean?,
+    @ColumnInfo(name = "isFavorite")
+    var isFavorite: Boolean?,
+    @ColumnInfo(name = "isWishlist")
+    var isWishlist: Boolean?,
+    @ColumnInfo(name = "isBlacklist")
+    var isBlackklist: Boolean?
 )
 
 @Entity(tableName = "wishlist")

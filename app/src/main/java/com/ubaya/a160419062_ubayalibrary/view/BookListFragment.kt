@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419062_ubayalibrary.R
@@ -44,9 +45,12 @@ class BookListFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.bookLiveData.observe(viewLifecycleOwner) {
+        viewModel.bookLiveData.observe(viewLifecycleOwner, Observer {
             bookListAdapter.updateBookList(it)
-        }
+        })
+//        viewModel.bookLiveData.observe(viewLifecycleOwner) {
+//            bookListAdapter.updateBookList(it)
+//        }
         viewModel.bookLoadErrorLD.observe(viewLifecycleOwner) {
             textError.visibility = if (it) View.VISIBLE else View.GONE
         }
