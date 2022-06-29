@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419062_ubayalibrary.R
+import com.ubaya.a160419062_ubayalibrary.model.Book
 import com.ubaya.a160419062_ubayalibrary.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_book_list.*
 
@@ -26,22 +27,32 @@ class BookListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel= ViewModelProvider(this).get(ListViewModel::class.java)
+
+        // ADD Book (default)
+        var books = Book("","","","","","","", "",
+            "", "", "", "", "", "")
+
+        var listBooks= listOf(books, books2, books3, books4, books5)
+        viewModel.addBooks(listBooks)
+
+        // SELECT Tenant
         viewModel.refresh()
 
-        recView.layoutManager = LinearLayoutManager(context)
-        recView.adapter = bookListAdapter
+        recView.layoutManager= LinearLayoutManager(context)
+        recView.adapter=bookListAdapter
 
         observeViewModel()
 
         refreshLayout.setOnRefreshListener {
-            recView.visibility = View.GONE
-            textError.visibility = View.GONE
-            progressLoad.visibility = View.VISIBLE
+            recView.visibility= View.GONE
+            textError.visibility= View.GONE
+            progressLoad.visibility= View.VISIBLE
             viewModel.refresh()
-            refreshLayout.isRefreshing = false
+            refreshLayout.isRefreshing= false
         }
-        (activity as AppCompatActivity).supportActionBar?.title = "Book Lists"
     }
 
     private fun observeViewModel() {

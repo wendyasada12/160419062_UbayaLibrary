@@ -15,13 +15,13 @@ import kotlinx.android.synthetic.main.book_list_item.view.*
 class BookLikeAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<BookLikeAdapter.BookViewHolder>(),ButtonDetailClickListener {
     class BookViewHolder(var view: BookListItemBinding) : RecyclerView.ViewHolder(view.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookLikeAdapter.BookViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = DataBindingUtil.inflate<BookListItemBinding>(inflater,R.layout.book_list_item, parent, false)
-        return BookLikeAdapter.BookViewHolder(view)
+        return BookViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: BookLikeAdapter.BookViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         holder.view.books = bookList[position]
         holder.view.listener = this
 //        val book = bookList[position]

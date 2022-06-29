@@ -31,8 +31,8 @@ class ListViewModel(application: Application) :AndroidViewModel(application), Co
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
 
-    fun refresh(){
-        loadingLD.value =true
+    fun refresh() {
+        loadingLD.value = true
         bookLoadErrorLD.value = false
         launch {
             val db = Room.databaseBuilder(
@@ -42,44 +42,16 @@ class ListViewModel(application: Application) :AndroidViewModel(application), Co
 
             bookLiveData.value = db.bookDao().selectAllBooks()
         }
-
-//        bookLiveData.value
-//
-//        bookLoadErrorLD.value = false
-//        loadingLD.value = true
-//        queue = Volley.newRequestQueue(getApplication())
-//        val url = "https://ubaya.fun/native/160419062/ANMP/book.php"
-//        val stringRequest = StringRequest(
-//            Request.Method.GET, url,
-//            {
-//                val sType = object : TypeToken<ArrayList<Book>>(){}.type
-//                val result = Gson().fromJson<ArrayList<Book>>(it, sType)
-//                bookLiveData.value = result
-//                loadingLD.value = false
-//                Log.d("showVolley", it)
-//            },
-//            {
-//                loadingLD.value = false
-//                bookLoadErrorLD.value = true
-//                Log.d("errorVolley", it.toString())
-//            }
-//        ).apply {
-//            tag = TAG
-//        }
-//        queue?.add(stringRequest)
     }
-
-//    fun clearTask(book: Book) {
-//        launch {
-//            val db = Room.databaseBuilder(
-//                getApplication(),
-//                BookDB::class.java, "newbookdb"
-//            ).build()
-//            db.bookDao().deleteBooks(book)
-//
-//            bookLiveData.value = db.bookDao().selectAllBooks()
-//        }
-//    }
+    fun addBooks(list: List<Book>){
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(),
+                BookDB::class.java, "ubayakulinerdb"
+            ).build()
+            db.bookDao().insertBooks(*list.toTypedArray())
+        }
+    }
     override fun onCleared() {
         super.onCleared()
         queue?.cancelAll(TAG)
