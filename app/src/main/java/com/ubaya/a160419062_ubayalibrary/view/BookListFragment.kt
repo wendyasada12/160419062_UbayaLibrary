@@ -95,7 +95,7 @@ class BookListFragment : Fragment() {
         var listBooks= listOf(books, books2, books3, books4, books5)
         viewModel.addBooks(listBooks)
 
-        // SELECT Tenant
+        // SELECT
         viewModel.refresh()
 
         recView.layoutManager= LinearLayoutManager(context)
@@ -113,24 +113,23 @@ class BookListFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.bookLiveData.observe(viewLifecycleOwner, Observer {
+
+        viewModel.bookLiveData.observe(viewLifecycleOwner){
             bookListAdapter.updateBookList(it)
-        })
-//        viewModel.bookLiveData.observe(viewLifecycleOwner) {
-//            bookListAdapter.updateBookList(it)
-//        }
-        viewModel.bookLoadErrorLD.observe(viewLifecycleOwner) {
-            textError.visibility = if (it) View.VISIBLE else View.GONE
         }
-        viewModel.loadingLD.observe(viewLifecycleOwner) {
-            if(it) {
-                recView.visibility = View.GONE
-                progressLoad.visibility = View.VISIBLE
-            } else {
-                recView.visibility = View.VISIBLE
-                progressLoad.visibility = View.GONE
+        viewModel.bookLoadErrorLD.observe(viewLifecycleOwner){
+            textError.visibility= if(it)View.VISIBLE else View.GONE
+        }
+        viewModel.loadingLD.observe(viewLifecycleOwner){
+            if(it){
+                recView.visibility= View.GONE
+                progressLoad.visibility= View.VISIBLE
+            }else{
+                recView.visibility= View.VISIBLE
+                progressLoad.visibility= View.GONE
             }
         }
+
     }
 
 }

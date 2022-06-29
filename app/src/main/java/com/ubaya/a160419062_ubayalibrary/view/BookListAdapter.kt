@@ -18,29 +18,13 @@ class BookListAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<Book
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = DataBindingUtil.inflate<BookListItemBinding>(inflater,R.layout.book_list_item, parent, false)
+//        val view = inflater.inflate(R.layout.book_list_item, parent, false)
         return BookViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         holder.view.books = bookList[position]
         holder.view.listener = this
-//        val book = bookList[position]
-//        with (holder.view){
-//            textID.text = book.id
-//            textBName.text = book.name
-//            textAuthorName.text = book.author
-//            buttonDetail.setOnClickListener {
-//                val action = book.id?.let { id ->
-//                    BookListFragmentDirections.actionToBookDetail(id)
-//
-//                }
-//                if (action != null)
-//                {
-//                    Navigation.findNavController(it).navigate(action)
-//                }
-//            }
-//            imageBookPhoto.loadImage(book.image, progressLoadingBookPhoto)
-//        }
     }
 
     override fun onButtonDetailClick(v: View) {

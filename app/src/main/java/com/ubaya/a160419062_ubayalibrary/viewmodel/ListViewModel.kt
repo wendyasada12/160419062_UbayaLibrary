@@ -37,7 +37,7 @@ class ListViewModel(application: Application) :AndroidViewModel(application), Co
         launch {
             val db = Room.databaseBuilder(
                 getApplication(),
-                BookDB::class.java, "newtododb"
+                BookDB::class.java, "bookdb"
             ).build()
 
             bookLiveData.value = db.bookDao().selectAllBooks()
@@ -47,7 +47,7 @@ class ListViewModel(application: Application) :AndroidViewModel(application), Co
         launch {
             val db = Room.databaseBuilder(
                 getApplication(),
-                BookDB::class.java, "ubayakulinerdb"
+                BookDB::class.java, "bookdb"
             ).build()
             db.bookDao().insertBooks(*list.toTypedArray())
         }
@@ -56,4 +56,5 @@ class ListViewModel(application: Application) :AndroidViewModel(application), Co
         super.onCleared()
         queue?.cancelAll(TAG)
     }
+
 }

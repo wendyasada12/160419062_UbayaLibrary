@@ -17,7 +17,7 @@ abstract class BookDB:RoomDatabase() {
         //Membuat database
         private fun buildDatabase(context: Context)=
             Room.databaseBuilder(context.applicationContext,
-                BookDB::class.java, "bookDB").build()
+                BookDB::class.java, "bookdb").build()
 
         // Memastikan bahwa object tododb adalah sigleton
         operator fun invoke(context: Context){

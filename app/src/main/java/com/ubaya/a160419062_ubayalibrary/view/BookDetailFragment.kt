@@ -31,38 +31,38 @@ class BookDetailFragment : Fragment() {
 
             observeViewModel()
 
-            buttonFav.setOnClickListener {
-                viewModel.updateFav(bookID)
-            }
-            buttonLike.setOnClickListener {
-                viewModel.updateLike(bookID)
-            }
-            buttonWish.setOnClickListener {
-                viewModel.updatewish(bookID)
-            }
-            buttonBlackList.setOnClickListener {
-                viewModel.updateBlack(bookID)
-            }
+//            buttonFav.setOnClickListener {
+//                viewModel.updateFav(bookID)
+//            }
+//            buttonLike.setOnClickListener {
+//                viewModel.updateLike(bookID)
+//            }
+//            buttonWish.setOnClickListener {
+//                viewModel.updatewish(bookID)
+//            }
+//            buttonBlackList.setOnClickListener {
+//                viewModel.updateBlack(bookID)
+//            }
         }
 
         (activity as AppCompatActivity).supportActionBar?.title = "Book Detail"
     }
 
     private fun observeViewModel() {
-        viewModel.bookLD.observe(viewLifecycleOwner){
-            val book = viewModel.bookLD.value
-            book?.let {
-                textBookName.setText(it.name)
-                textAuthor.setText(it.author)
-                textDesc.setText(it.description)
-                textCategory.setText(it.category)
-                textPages.setText(it.pages)
-                textLanguage.setText(it.language)
-                textDateRelease.setText(it.date)
-                textPublisher.setText(it.publisher)
-                imageBookDetail.loadImage(book.image, progressBookPhotoDetail)
-            }
-        }
+//        viewModel.bookLD.observe(viewLifecycleOwner){
+//            val book = viewModel.bookLD.value
+//            book?.let {
+//                textBookName.setText(it.name)
+//                textAuthor.setText(it.author)
+//                textDesc.setText(it.description)
+//                textCategory.setText(it.category)
+//                textPages.setText(it.pages)
+//                textLanguage.setText(it.language)
+//                textDateRelease.setText(it.date)
+//                textPublisher.setText(it.publisher)
+//                imageBookDetail.loadImage(book.image, progressBookPhotoDetail)
+//            }
+//        }
         viewModel.fav.observe(viewLifecycleOwner){
             if(it){
                 Toast.makeText(context, "Book add to favorite", Toast.LENGTH_SHORT).show()
