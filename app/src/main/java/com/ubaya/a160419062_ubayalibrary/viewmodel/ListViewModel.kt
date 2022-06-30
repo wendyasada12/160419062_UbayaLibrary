@@ -24,6 +24,7 @@ class ListViewModel(application: Application) :AndroidViewModel(application), Co
     val bookLiveData = MutableLiveData<List<Book>>()
     val bookLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
+    var books :ArrayList<Book> = ArrayList()
     val TAG = "volleyTag"
     private var queue: RequestQueue? = null
     private var job = Job()

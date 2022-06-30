@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419062_ubayalibrary.R
 import com.ubaya.a160419062_ubayalibrary.model.Book
@@ -122,11 +123,12 @@ class BookListFragment : Fragment() {
         }
         viewModel.loadingLD.observe(viewLifecycleOwner){
             if(it){
-                recView.visibility= View.GONE
-                progressLoad.visibility= View.VISIBLE
-            }else{
                 recView.visibility= View.VISIBLE
                 progressLoad.visibility= View.GONE
+
+            }else{
+                recView.visibility= View.GONE
+                progressLoad.visibility= View.VISIBLE
             }
         }
 

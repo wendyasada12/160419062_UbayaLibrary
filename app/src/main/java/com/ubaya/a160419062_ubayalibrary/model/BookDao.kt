@@ -6,7 +6,7 @@ import androidx.room.*
 interface BookDao {
     //Book
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertBooks(vararg tenant:Book)
+    suspend fun insertBooks(vararg book: Book)
 
     @Query("SELECT * FROM books")
     suspend fun selectAllBooks(): List<Book>
@@ -15,6 +15,6 @@ interface BookDao {
     suspend fun selectBooks(id:String): Book
 
     @Delete
-    suspend fun deleteBooks(tenant: Book)
+    suspend fun deleteBooks(book: Book)
 
 }

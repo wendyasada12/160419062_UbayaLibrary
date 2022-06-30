@@ -23,7 +23,7 @@ import kotlin.coroutines.CoroutineContext
 import org.json.JSONObject
 
 class DetailViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
-    val bookLD = MutableLiveData<List<Book>>()
+    val bookLD = MutableLiveData<Book>()
     val booksLoadError= MutableLiveData<Boolean>()
     val loadingLD= MutableLiveData<Boolean>()
     val TAG = "volleyTag"
@@ -36,129 +36,129 @@ class DetailViewModel(application: Application) : AndroidViewModel(application),
 
     private val job= Job()
 
-    fun fetch(bookID: String?) {
-//        bookLD.value= false
-//        loadingLD.value= true
-//
-//        launch {
-//            val db= Room.databaseBuilder(
-//                getApplication(),
-//                BookDB::class.java, "bookdb"
-//            ).build()
-//            bookLD.value= db.bookDao().selectBooks(bookID)
-//            Log.d("bookld", bookLD.value.toString())
-//        }
-//        loadingLD.value= false
+    fun fetch(bookID: String) {
+        booksLoadError.value= false
+        loadingLD.value= true
+
+        launch {
+            val db= Room.databaseBuilder(
+                getApplication(),
+                BookDB::class.java, "bookdb"
+            ).build()
+            bookLD.value= db.bookDao().selectBooks(bookID)
+            Log.d("bookld", bookLD.value.toString())
+        }
+        loadingLD.value= false
     }
 
-//    fun updateFav(bookID: String?){
-//        queue = Volley.newRequestQueue(getApplication())
-//        val url = "https://ubaya.fun/native/160419062/ANMP/bookfav.php"
-//        val stringRequest = object : StringRequest(
-//            Request.Method.POST,
-//            url,
-//            {
-//                //val sType = object : TypeToken<ArrayList<Book>>() {}.type
-//                val obj = JSONObject(it)
-//                if(obj.getString("result") == "OK") {
-//                    fav.value = (obj.getString("message") == "add")
-//                    bookLD.value?.isFavorite = (obj.getString("message") == "add")
-//                }
-//                Log.d("showbook", it)
-//            },
-//            {
-//                Log.d("errorbook", it.toString())
-//            }
-//        ){
-//            override fun getParams(): MutableMap<String, String> {
-//                val params = HashMap<String, String>()
-//                params["id"] = bookID.toString()
-//                return params
-//            }
-//        }
-//        queue?.add(stringRequest)
-//    }
-//    fun updateLike(bookID: String?){
-//        queue = Volley.newRequestQueue(getApplication())
-//        val url = "https://ubaya.fun/native/160419062/ANMP/booklike.php"
-//        val stringRequest = object : StringRequest(
-//            Request.Method.POST,
-//            url,
-//            {
-//                //val sType = object : TypeToken<ArrayList<Book>>() {}.type
-//                val obj = JSONObject(it)
-//                if(obj.getString("result") == "OK") {
-//                    like.value = (obj.getString("message") == "add")
-//                    bookLD.value?.isFavorite = (obj.getString("message") == "add")
-//                }
-//                Log.d("showbook", it)
-//            },
-//            {
-//                Log.d("errorbook", it.toString())
-//            }
-//        ){
-//            override fun getParams(): MutableMap<String, String> {
-//                val params = HashMap<String, String>()
-//                params["id"] = bookID.toString()
-//                return params
-//            }
-//        }
-//        queue?.add(stringRequest)
-//    }
-//    fun updatewish(bookID: String?){
-//        queue = Volley.newRequestQueue(getApplication())
-//        val url = "https://ubaya.fun/native/160419062/ANMP/bookwishlist.php"
-//        val stringRequest = object : StringRequest(
-//            Request.Method.POST,
-//            url,
-//            {
-//                //val sType = object : TypeToken<ArrayList<Book>>() {}.type
-//                val obj = JSONObject(it)
-//                if(obj.getString("result") == "OK") {
-//                    wish.value = (obj.getString("message") == "add")
-//                    bookLD.value?.isFavorite = (obj.getString("message") == "add")
-//                }
-//                Log.d("showbook", it)
-//            },
-//            {
-//                Log.d("errorbook", it.toString())
-//            }
-//        ){
-//            override fun getParams(): MutableMap<String, String> {
-//                val params = HashMap<String, String>()
-//                params["id"] = bookID.toString()
-//                return params
-//            }
-//        }
-//        queue?.add(stringRequest)
-//    }
-//    fun updateBlack(bookID: String?){
-//        queue = Volley.newRequestQueue(getApplication())
-//        val url = "https://ubaya.fun/native/160419062/ANMP/bookblacklist.php"
-//        val stringRequest = object : StringRequest(
-//            Request.Method.POST,
-//            url,
-//            {
-//                //val sType = object : TypeToken<ArrayList<Book>>() {}.type
-//                val obj = JSONObject(it)
-//                if(obj.getString("result") == "OK") {
-//                    black.value = (obj.getString("message") == "add")
-//                    bookLD.value?.isFavorite = (obj.getString("message") == "add")
-//                }
-//                Log.d("showbook", it)
-//            },
-//            {
-//                Log.d("errorbook", it.toString())
-//            }
-//        ){
-//            override fun getParams(): MutableMap<String, String> {
-//                val params = HashMap<String, String>()
-//                params["id"] = bookID.toString()
-//                return params
-//            }
-//        }
-//        queue?.add(stringRequest)
-//    }
+    fun updateFav(bookID: String?){
+        queue = Volley.newRequestQueue(getApplication())
+        val url = "https://ubaya.fun/native/160419062/ANMP/bookfav.php"
+        val stringRequest = object : StringRequest(
+            Request.Method.POST,
+            url,
+            {
+                //val sType = object : TypeToken<ArrayList<Book>>() {}.type
+                val obj = JSONObject(it)
+                if(obj.getString("result") == "OK") {
+                    fav.value = (obj.getString("message") == "add")
+                    bookLD.value?.isFavorite = (obj.getString("message") == "add")
+                }
+                Log.d("showbook", it)
+            },
+            {
+                Log.d("errorbook", it.toString())
+            }
+        ){
+            override fun getParams(): MutableMap<String, String> {
+                val params = HashMap<String, String>()
+                params["id"] = bookID.toString()
+                return params
+            }
+        }
+        queue?.add(stringRequest)
+    }
+    fun updateLike(bookID: String?){
+        queue = Volley.newRequestQueue(getApplication())
+        val url = "https://ubaya.fun/native/160419062/ANMP/booklike.php"
+        val stringRequest = object : StringRequest(
+            Request.Method.POST,
+            url,
+            {
+                //val sType = object : TypeToken<ArrayList<Book>>() {}.type
+                val obj = JSONObject(it)
+                if(obj.getString("result") == "OK") {
+                    like.value = (obj.getString("message") == "add")
+                    bookLD.value?.isFavorite = (obj.getString("message") == "add")
+                }
+                Log.d("showbook", it)
+            },
+            {
+                Log.d("errorbook", it.toString())
+            }
+        ){
+            override fun getParams(): MutableMap<String, String> {
+                val params = HashMap<String, String>()
+                params["id"] = bookID.toString()
+                return params
+            }
+        }
+        queue?.add(stringRequest)
+    }
+    fun updatewish(bookID: String?){
+        queue = Volley.newRequestQueue(getApplication())
+        val url = "https://ubaya.fun/native/160419062/ANMP/bookwishlist.php"
+        val stringRequest = object : StringRequest(
+            Request.Method.POST,
+            url,
+            {
+                //val sType = object : TypeToken<ArrayList<Book>>() {}.type
+                val obj = JSONObject(it)
+                if(obj.getString("result") == "OK") {
+                    wish.value = (obj.getString("message") == "add")
+                    bookLD.value?.isFavorite = (obj.getString("message") == "add")
+                }
+                Log.d("showbook", it)
+            },
+            {
+                Log.d("errorbook", it.toString())
+            }
+        ){
+            override fun getParams(): MutableMap<String, String> {
+                val params = HashMap<String, String>()
+                params["id"] = bookID.toString()
+                return params
+            }
+        }
+        queue?.add(stringRequest)
+    }
+    fun updateBlack(bookID: String?){
+        queue = Volley.newRequestQueue(getApplication())
+        val url = "https://ubaya.fun/native/160419062/ANMP/bookblacklist.php"
+        val stringRequest = object : StringRequest(
+            Request.Method.POST,
+            url,
+            {
+                //val sType = object : TypeToken<ArrayList<Book>>() {}.type
+                val obj = JSONObject(it)
+                if(obj.getString("result") == "OK") {
+                    black.value = (obj.getString("message") == "add")
+                    bookLD.value?.isFavorite = (obj.getString("message") == "add")
+                }
+                Log.d("showbook", it)
+            },
+            {
+                Log.d("errorbook", it.toString())
+            }
+        ){
+            override fun getParams(): MutableMap<String, String> {
+                val params = HashMap<String, String>()
+                params["id"] = bookID.toString()
+                return params
+            }
+        }
+        queue?.add(stringRequest)
+    }
     override fun onCleared() {
         super.onCleared()
         queue?.cancelAll(TAG)
