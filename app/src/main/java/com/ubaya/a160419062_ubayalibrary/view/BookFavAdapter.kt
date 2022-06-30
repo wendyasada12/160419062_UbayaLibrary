@@ -13,7 +13,7 @@ import com.ubaya.a160419062_ubayalibrary.model.Favorite
 import com.ubaya.a160419062_ubayalibrary.util.loadImage
 import kotlinx.android.synthetic.main.book_list_item.view.*
 
-class BookFavAdapter(val favBookList: ArrayList<Book>) : RecyclerView.Adapter<BookFavAdapter.FavViewHolder>(), ButtonDetailClickListener{
+class BookFavAdapter(val favBookList: ArrayList<Book>) : RecyclerView.Adapter<BookFavAdapter.FavViewHolder>(), ButtonDetailClickListener, ButtonEditClickListener{
     class FavViewHolder(var view: BookListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookFavAdapter.FavViewHolder {
@@ -54,5 +54,9 @@ class BookFavAdapter(val favBookList: ArrayList<Book>) : RecyclerView.Adapter<Bo
     override fun onButtonDetailClick(v: View) {
         val action = FavoriteFragmentDirections.actionFavToBookDetail(v.tag.toString())
         Navigation.findNavController(v).navigate(action)
+    }
+
+    override fun onButtonEditClick(v: View) {
+        TODO("Not yet implemented")
     }
 }

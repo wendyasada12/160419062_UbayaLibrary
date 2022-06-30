@@ -6,6 +6,10 @@ interface ButtonDetailClickListener{
     fun onButtonDetailClick(v: View)
 }
 
+interface ButtonEditClickListener{
+    fun onButtonEditClick(v: View)
+}
+
 interface ButtonLikeClickListener{
     fun onButtonLikeClick(v: View)
 }

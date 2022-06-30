@@ -10,6 +10,9 @@
         <variable
             name="listener"
             type="com.ubaya.a160419062_ubayalibrary.view.ButtonDetailClickListener" />
+        <variable
+            name="listener2"
+            type="com.ubaya.a160419062_ubayalibrary.view.ButtonEditClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,6 +90,19 @@
                     android:onClick="@{listener::onButtonDetailClick}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
+
+                <Button
+                    android:id="@+id/buttonEdit"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:onClick="@{listener2::onButtonEditClick}"
+                    android:tag="@{books.id}"
+                    android:text="Edit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonDetail" />
 
                 <ProgressBar
                     android:id="@+id/progressLoadingBookPhoto"

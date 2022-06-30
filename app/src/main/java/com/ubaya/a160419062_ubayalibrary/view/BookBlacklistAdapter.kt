@@ -12,7 +12,7 @@ import com.ubaya.a160419062_ubayalibrary.model.Book
 import com.ubaya.a160419062_ubayalibrary.util.loadImage
 import kotlinx.android.synthetic.main.book_list_item.view.*
 
-class BookBlacklistAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<BookBlacklistAdapter.BookViewHolder>(),ButtonDetailClickListener {
+class BookBlacklistAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<BookBlacklistAdapter.BookViewHolder>(),ButtonDetailClickListener, ButtonEditClickListener {
     class BookViewHolder(var view: BookListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookBlacklistAdapter.BookViewHolder {
@@ -53,5 +53,9 @@ class BookBlacklistAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter
     override fun onButtonDetailClick(v: View) {
         val action = BlacklistFragmentDirections.actionBlackToBookDetail(v.tag.toString())
         Navigation.findNavController(v).navigate(action)
+    }
+
+    override fun onButtonEditClick(v: View) {
+        TODO("Not yet implemented")
     }
 }
