@@ -14,7 +14,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ubaya.a160419062_ubayalibrary.model.Book
 import com.ubaya.a160419062_ubayalibrary.model.BookDB
-import com.ubaya.a160419062_ubayalibrary.model.BookDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -39,7 +38,7 @@ class ListViewModel(application: Application) :AndroidViewModel(application), Co
         launch {
             val db = Room.databaseBuilder(
                 getApplication(),
-                BookDatabase::class.java, "bookdatabase"
+                BookDB::class.java, "bookdb"
             ).build()
 
             bookLiveData.value = db.bookDao().selectAllBooks()
@@ -49,7 +48,7 @@ class ListViewModel(application: Application) :AndroidViewModel(application), Co
         launch {
             val db = Room.databaseBuilder(
                 getApplication(),
-                BookDatabase::class.java, "bookdatabase"
+                BookDB::class.java, "bookdb"
             ).build()
             db.bookDao().insertBooks(*list.toTypedArray())
         }

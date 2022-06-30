@@ -62,16 +62,10 @@ class BookDetailFragment : Fragment(), ButtonAddReviewClickListener{
 //                viewModel.updateBlack(bookID)
 //            }
 //        }
-
+//
         (activity as AppCompatActivity).supportActionBar?.title = "Book Detail"
 
-
         observeViewModel()
-
-        buttonAddReview.setOnClickListener {
-            val action = BookDetailFragmentDirections.actionAddReviewFragment(bookId)
-            Navigation.findNavController(it).navigate(action)
-        }
     }
 
     private fun observeViewModel() {
@@ -117,6 +111,7 @@ class BookDetailFragment : Fragment(), ButtonAddReviewClickListener{
     }
 
     override fun onButtonAddReview(v: View) {
-
+        val action = BookDetailFragmentDirections.actionAddReviewFragment(v.tag.toString())
+        Navigation.findNavController(v).navigate(action)
     }
 }

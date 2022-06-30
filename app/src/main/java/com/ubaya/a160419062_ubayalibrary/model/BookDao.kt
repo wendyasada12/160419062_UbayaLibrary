@@ -17,6 +17,6 @@ interface BookDao {
     @Delete
     suspend fun deleteBooks(book: Book)
 
-
+    //Favorite
 
 }
