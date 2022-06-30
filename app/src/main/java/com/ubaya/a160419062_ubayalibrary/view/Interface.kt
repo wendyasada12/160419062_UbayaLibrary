@@ -21,3 +21,7 @@ interface ButtonWishClickListener{
 interface ButtonBlackClickListener{
     fun onButtonBlackClick(v: View)
 }
+
+interface ButtonAddReviewClickListener{
+    fun onButtonAddReview(v: View)
+}

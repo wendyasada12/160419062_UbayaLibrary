@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419062_ubayalibrary.R
 import com.ubaya.a160419062_ubayalibrary.databinding.FragmentBookDetailBinding
@@ -17,7 +18,7 @@ import com.ubaya.a160419062_ubayalibrary.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.fragment_book_detail.*
 import kotlinx.android.synthetic.main.fragment_book_list.*
 
-class BookDetailFragment : Fragment(){
+class BookDetailFragment : Fragment(), ButtonAddReviewClickListener{
     private lateinit var viewModel: DetailViewModel
     private lateinit var dataBinding: FragmentBookDetailBinding
 
@@ -107,5 +108,10 @@ class BookDetailFragment : Fragment(){
                 Toast.makeText(context, "Book remove from blacklist", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onButtonAddReview(v: View) {
+        val action = BookDetailFragmentDirections.actionAddReviewFragment(v.tag.toString())
+        Navigation.findNavController(v).navigate(action)
     }
 }

@@ -42,7 +42,8 @@ class BookListFragment : Fragment() {
             "English",
             "https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
             "2018-12-04",
-            "No Starch Press")
+            "No Starch Press",
+            false, false, false, false)
 
         var books2 = Book("0002",
             "All Tomorrows",
@@ -53,7 +54,8 @@ class BookListFragment : Fragment() {
             "English",
             "https://upload.wikimedia.org/wikipedia/en/2/2a/All_tomorrows_cover.jpg",
             "2006-10-04",
-            "Nemo Ramjet")
+            "Nemo Ramjet",
+            false, false, false, false)
 
         var books3 = Book("0003",
             "Nineteen Eighty-Four",
@@ -64,7 +66,8 @@ class BookListFragment : Fragment() {
             "English",
             "https://upload.wikimedia.org/wikipedia/commons/c/c3/1984first.jpg",
             "1949-06-08",
-            "Kjell Hakansson Forlag")
+            "Kjell Hakansson Forlag",
+            false, false, false, false)
 
         var books4 = Book("0004",
             "Fluent Python",
@@ -75,7 +78,8 @@ class BookListFragment : Fragment() {
             "English",
             "https://images-na.ssl-images-amazon.com/images/I/41R+fNX-akL._SX379_BO1,204,203,200_.jpg",
             "2015-07-24",
-            "O Reilly Media")
+            "O Reilly Media",
+            false, false, false, false)
 
         var books5 = Book("0005",
             "Rethinking Productivity in Software Engineering",
@@ -86,7 +90,8 @@ class BookListFragment : Fragment() {
             "English",
             "https://images-na.ssl-images-amazon.com/images/I/41TT14ilLUL._SX348_BO1,204,203,200_.jpg",
             "2019-05-11",
-            "Apress")
+            "Apress",
+            false, false, false, false)
 
         var listBooks= listOf(books, books2, books3, books4, books5)
         viewModel.addBooks(listBooks)

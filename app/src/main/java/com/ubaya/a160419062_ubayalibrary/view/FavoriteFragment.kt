@@ -28,42 +28,42 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        viewModel.fetchFav()
-
-        recFav.layoutManager = LinearLayoutManager(context)
-        recFav.adapter = favListAdapter
-
-        observeViewModel()
-
-        refreshLayoutFav.setOnRefreshListener {
-            recFav.visibility = View.GONE
-            textErrorFav.visibility = View.GONE
-            progressListFav.visibility = View.VISIBLE
-            viewModel.fetchFav()
-            refreshLayoutFav.isRefreshing = false
-        }
-        (activity as AppCompatActivity).supportActionBar?.title = "Book Favorite Lists"
+//        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
+////        viewModel.fetchFav()
+//
+//        recFav.layoutManager = LinearLayoutManager(context)
+////        recFav.adapter = bookListAdapter
+//
+//        observeViewModel()
+//
+//        refreshLayoutFav.setOnRefreshListener {
+//            recFav.visibility = View.GONE
+//            textErrorFav.visibility = View.GONE
+//            progressListFav.visibility = View.VISIBLE
+////            viewModel.fetchFav()
+//            refreshLayoutFav.isRefreshing = false
+//        }
+//        (activity as AppCompatActivity).supportActionBar?.title = "Book Favorite Lists"
     }
 
     private fun observeViewModel() {
-        viewModel.bookFavUserLiveData.observe(viewLifecycleOwner, Observer {
-            favListAdapter.updateFavBookList(it)
-        })
-//        viewModel.bookFavLiveData.observe(viewLifecycleOwner) {
+//        viewModel.bookFavLiveData.observe(viewLifecycleOwner, Observer {
 //            bookListAdapter.updateBookList(it)
+//        })
+////        viewModel.bookFavLiveData.observe(viewLifecycleOwner) {
+////            bookListAdapter.updateBookList(it)
+////        }
+//        viewModel.bookFavLoadErrorLD.observe(viewLifecycleOwner) {
+//            textErrorFav.visibility = if (it) View.VISIBLE else View.GONE
 //        }
-        viewModel.bookFavLoadErrorLD.observe(viewLifecycleOwner) {
-            textErrorFav.visibility = if (it) View.VISIBLE else View.GONE
-        }
-        viewModel.loadingFavLD.observe(viewLifecycleOwner) {
-            if(it) {
-                recFav.visibility = View.GONE
-                progressListFav.visibility = View.VISIBLE
-            } else {
-                recFav.visibility = View.VISIBLE
-                progressListFav.visibility = View.GONE
-            }
-        }
+//        viewModel.loadingFavLD.observe(viewLifecycleOwner) {
+//            if(it) {
+//                recFav.visibility = View.GONE
+//                progressListFav.visibility = View.VISIBLE
+//            } else {
+//                recFav.visibility = View.VISIBLE
+//                progressListFav.visibility = View.GONE
+//            }
+//        }
     }
 }

@@ -11,7 +11,14 @@ import java.lang.Exception
 
 @BindingAdapter("android:imageUrl", "android:progressBar")
 fun loadImageFromUrl(view: ImageView, url: String, progressBar: ProgressBar) {
-    view.loadImage(url,progressBar)
+
+    if (url != null) {
+        view.loadImage(url,progressBar)
+    }
+    else
+    {
+        view.loadImage("",progressBar)
+    }
 }
 
 fun ImageView.loadImage(url: String?, progressBar: ProgressBar) {
