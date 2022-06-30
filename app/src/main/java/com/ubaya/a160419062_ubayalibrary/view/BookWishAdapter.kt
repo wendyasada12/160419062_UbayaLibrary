@@ -12,7 +12,7 @@ import com.ubaya.a160419062_ubayalibrary.model.Book
 import com.ubaya.a160419062_ubayalibrary.util.loadImage
 import kotlinx.android.synthetic.main.book_list_item.view.*
 
-class BookWishAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<BookWishAdapter.BookViewHolder>(), ButtonDetailClickListener {
+class BookWishAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<BookWishAdapter.BookViewHolder>(), ButtonDetailClickListener, ButtonEditClickListener {
     class BookViewHolder(var view: BookListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookWishAdapter.BookViewHolder {
@@ -56,5 +56,9 @@ class BookWishAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<Book
     override fun onButtonDetailClick(v: View) {
         val action = WishlistFragmentDirections.actionWishToBookDetail(v.tag.toString())
         Navigation.findNavController(v).navigate(action)
+    }
+
+    override fun onButtonEditClick(v: View) {
+        TODO("Not yet implemented")
     }
 }

@@ -14,10 +14,10 @@
             android:id="@+id/radioGroupPriority"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout7"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout7"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+            app:layout_constraintTop_toBottomOf="@+id/textView11">
 
             <RadioButton
                 android:id="@+id/radioHigh"
@@ -25,21 +25,21 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:tag="3"
-                android:text="High Priority" />
+                android:text="Informatics" />
 
             <RadioButton
                 android:id="@+id/radioMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:tag="2"
-                android:text="Medium Priority" />
+                android:text="Novel" />
 
             <RadioButton
                 android:id="@+id/radioLow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:tag="1"
-                android:text="Low Priority" />
+                android:text="Other" />
         </RadioGroup>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -152,9 +152,37 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textLink"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout5"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout7"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout7"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Description" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Categories"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout5"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
