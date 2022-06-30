@@ -4,17 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/layout/activity_main.xml" value="0.10131712259371833" />
+        <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/layout/book_list_item.xml" value="0.20833333333333334" />
+        <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/layout/fragment_add_review.xml" value="0.20833333333333334" />
         <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/layout/fragment_blacklist.xml" value="0.18342391304347827" />
-        <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/layout/fragment_create_book.xml" value="0.25" />
+        <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/layout/fragment_book_detail.xml" value="0.20833333333333334" />
+        <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/layout/fragment_book_list.xml" value="0.22" />
+        <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/layout/fragment_create_book.xml" value="0.22" />
+        <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/layout/fragment_favorite.xml" value="0.20833333333333334" />
+        <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/layout/fragment_profile.xml" value="0.20833333333333334" />
+        <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/layout/fragment_setting.xml" value="0.20833333333333334" />
+        <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/menu/menu_bottom.xml" value="0.20833333333333334" />
+        <entry key="..\:/Documents/Semester 6/ANMP/UAS_UbayaLibrary/app/src/main/res/menu/menu_view.xml" value="0.20833333333333334" />
         <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/book_fav_item.xml" value="0.264" />
         <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/book_list_item.xml" value="0.264" />
-        <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/fragment_add_review.xml" value="0.25416666666666665" />
         <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/fragment_blacklist.xml" value="0.25416666666666665" />
         <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/fragment_book_detail.xml" value="0.25" />
         <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/fragment_book_list.xml" value="0.25" />
-        <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/fragment_create_book.xml" value="0.25416666666666665" />
-        <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/fragment_edit_book.xml" value="0.25416666666666665" />
         <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/fragment_favorite.xml" value="0.22826086956521738" />
         <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/fragment_like.xml" value="0.25416666666666665" />
         <entry key="..\:/Wendy/AndroidProjects/160419062_UbayaLibrary/app/src/main/res/layout/fragment_profile.xml" value="0.264" />

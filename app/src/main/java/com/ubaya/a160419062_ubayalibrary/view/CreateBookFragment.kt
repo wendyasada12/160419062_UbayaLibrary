@@ -10,9 +10,15 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.ubaya.a160419062_ubayalibrary.R
+import com.ubaya.a160419062_ubayalibrary.databinding.FragmentAddReviewBinding
+import com.ubaya.a160419062_ubayalibrary.model.Book
+import com.ubaya.a160419062_ubayalibrary.viewmodel.DetailViewModel
+import kotlinx.android.synthetic.main.book_list_item.*
+import kotlinx.android.synthetic.main.fragment_create_book.*
 
 
 class CreateBookFragment : Fragment() {
+    private lateinit var viewModel: DetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +30,28 @@ class CreateBookFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
 
+        buttonAddBook.setOnClickListener{
+
+            var radio =
+                view.findViewById<RadioButton>(radioGroupCategory.checkedRadioButtonId)
+            var books = Book(
+                textIdBook.text.toString(),
+                textName.text.toString(),
+                radio.text.toString(),
+                textDesc.text.toString(),
+                textAuthor.text.toString(),
+                textPages.text.toString(),
+                textLanguage.text.toString(),
+                textLink.text.toString(),
+                textPublisher.text.toString(),
+                textDateBook.text.toString())
+
+            val listBook = listOf(books)
+            viewModel.addBooks(listBook)
+            Toast.makeText(view.context, "Success Add Book", Toast.LENGTH_LONG).show()
+            Navigation.findNavController(it).popBackStack()
+        }
     }
 }

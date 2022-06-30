@@ -4,29 +4,25 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.room.Room
-import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.ubaya.a160419062_ubayalibrary.model.Book
 import com.ubaya.a160419062_ubayalibrary.model.BookDB
-import com.ubaya.a160419062_ubayalibrary.model.BookDatabase
+import com.ubaya.a160419062_ubayalibrary.model.Profile
+import com.ubaya.a160419062_ubayalibrary.model.UserDB
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class ListViewModel(application: Application) :AndroidViewModel(application), CoroutineScope {
-    val bookLiveData = MutableLiveData<List<Book>>()
-    val bookLoadErrorLD = MutableLiveData<Boolean>()
+class UserListViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
+    val userLiveData = MutableLiveData<Profile>()
+    val userLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
     var books :ArrayList<Book> = ArrayList()
     val TAG = "volleyTag"
+
     private var queue: RequestQueue? = null
     private var job = Job()
 
@@ -35,25 +31,28 @@ class ListViewModel(application: Application) :AndroidViewModel(application), Co
 
     fun refresh() {
         loadingLD.value = true
-        bookLoadErrorLD.value = false
+        userLoadErrorLD.value = false
         launch {
             val db = Room.databaseBuilder(
                 getApplication(),
-                BookDatabase::class.java, "bookdatabase"
+                UserDB::class.java, "userdb"
             ).build()
 
-            bookLiveData.value = db.bookDao().selectAllBooks()
+            userLiveData.value = db.userDao().selectAllProfile()
         }
     }
-    fun addBooks(list: List<Book>){
+
+    fun addProfile(list:List<Profile>){
         launch {
+            Log.d("Input Profile",list.toString())
             val db = Room.databaseBuilder(
                 getApplication(),
-                BookDatabase::class.java, "bookdatabase"
+                UserDB::class.java, "userdb"
             ).build()
-            db.bookDao().insertBooks(*list.toTypedArray())
+            db.userDao().insertAllProfile(*list.toTypedArray())
         }
     }
+
     override fun onCleared() {
         super.onCleared()
         queue?.cancelAll(TAG)
