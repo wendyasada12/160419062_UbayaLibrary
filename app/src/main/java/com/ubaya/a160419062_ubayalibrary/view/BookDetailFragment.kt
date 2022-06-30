@@ -41,30 +41,30 @@ class BookDetailFragment : Fragment(){
         }
         viewModel.fetch(bookId)
 
-        observeViewModel()
-
-        arguments?.let {
-            val bookID = BookDetailFragmentArgs.fromBundle(requireArguments()).bookID
-            viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-            viewModel.fetch(bookID)
-
-
-
-            buttonFav.setOnClickListener {
-                viewModel.updateFav(bookID)
-            }
-            buttonLike.setOnClickListener {
-                viewModel.updateLike(bookID)
-            }
-            buttonWish.setOnClickListener {
-                viewModel.updatewish(bookID)
-            }
-            buttonBlackList.setOnClickListener {
-                viewModel.updateBlack(bookID)
-            }
-        }
-
+//        arguments?.let {
+//            val bookID = BookDetailFragmentArgs.fromBundle(requireArguments()).bookID
+//            viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+//            viewModel.fetch(bookID)
+//
+//
+//
+//            buttonFav.setOnClickListener {
+//                viewModel.updateFav(bookID)
+//            }
+//            buttonLike.setOnClickListener {
+//                viewModel.updateLike(bookID)
+//            }
+//            buttonWish.setOnClickListener {
+//                viewModel.updatewish(bookID)
+//            }
+//            buttonBlackList.setOnClickListener {
+//                viewModel.updateBlack(bookID)
+//            }
+//        }
+//
         (activity as AppCompatActivity).supportActionBar?.title = "Book Detail"
+
+        observeViewModel()
     }
 
     private fun observeViewModel() {

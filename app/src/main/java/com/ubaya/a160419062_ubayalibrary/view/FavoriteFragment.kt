@@ -10,12 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419062_ubayalibrary.R
-import com.ubaya.a160419062_ubayalibrary.viewmodel.FavListViewModel
+import com.ubaya.a160419062_ubayalibrary.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
 class FavoriteFragment : Fragment() {
-    private lateinit var viewModel : FavListViewModel
-    private val bookListAdapter = BookFavAdapter(arrayListOf())
+    private lateinit var viewModel : ListViewModel
+    private val favListAdapter = BookFavAdapter(arrayListOf())
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,11 +26,13 @@ class FavoriteFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProvider(this).get(FavListViewModel::class.java)
-        viewModel.refresh()
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
+        viewModel.fetchFav()
 
         recFav.layoutManager = LinearLayoutManager(context)
-        recFav.adapter = bookListAdapter
+        recFav.adapter = favListAdapter
 
         observeViewModel()
 
@@ -37,15 +40,15 @@ class FavoriteFragment : Fragment() {
             recFav.visibility = View.GONE
             textErrorFav.visibility = View.GONE
             progressListFav.visibility = View.VISIBLE
-            viewModel.refresh()
+            viewModel.fetchFav()
             refreshLayoutFav.isRefreshing = false
         }
         (activity as AppCompatActivity).supportActionBar?.title = "Book Favorite Lists"
     }
 
     private fun observeViewModel() {
-        viewModel.bookFavLiveData.observe(viewLifecycleOwner, Observer {
-            bookListAdapter.updateBookList(it)
+        viewModel.bookFavUserLiveData.observe(viewLifecycleOwner, Observer {
+            favListAdapter.updateFavBookList(it)
         })
 //        viewModel.bookFavLiveData.observe(viewLifecycleOwner) {
 //            bookListAdapter.updateBookList(it)

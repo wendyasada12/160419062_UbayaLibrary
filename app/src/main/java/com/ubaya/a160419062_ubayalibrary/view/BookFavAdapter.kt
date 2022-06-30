@@ -9,19 +9,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ubaya.a160419062_ubayalibrary.R
 import com.ubaya.a160419062_ubayalibrary.databinding.BookListItemBinding
 import com.ubaya.a160419062_ubayalibrary.model.Book
+import com.ubaya.a160419062_ubayalibrary.model.Favorite
 import com.ubaya.a160419062_ubayalibrary.util.loadImage
 import kotlinx.android.synthetic.main.book_list_item.view.*
 
-class BookFavAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<BookFavAdapter.BookViewHolder>(), ButtonDetailClickListener{
-    class BookViewHolder(var view: BookListItemBinding) : RecyclerView.ViewHolder(view.root)
+class BookFavAdapter(val favBookList: ArrayList<Book>) : RecyclerView.Adapter<BookFavAdapter.FavViewHolder>(), ButtonDetailClickListener{
+    class FavViewHolder(var view: BookListItemBinding) : RecyclerView.ViewHolder(view.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookFavAdapter.BookViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookFavAdapter.FavViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = DataBindingUtil.inflate<BookListItemBinding>(inflater,R.layout.book_list_item, parent, false)
-        return BookFavAdapter.BookViewHolder(view)
+        return FavViewHolder(view)
     }
-    override fun onBindViewHolder(holder: BookFavAdapter.BookViewHolder, position: Int) {
-        holder.view.books = bookList[position]
+    override fun onBindViewHolder(holder: BookFavAdapter.FavViewHolder, position: Int) {
+        holder.view.books = favBookList[position]
         holder.view.listener = this
 //        val book = bookList[position]
 //        with (holder.view){
@@ -42,11 +43,11 @@ class BookFavAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<BookF
 //        }
     }
 
-    override fun getItemCount() = bookList.size
+    override fun getItemCount() = favBookList.size
 
-    fun updateBookList(newBookList: List<Book>){
-        bookList.clear()
-        bookList.addAll(newBookList)
+    fun updateFavBookList(newBookList: List<Book>){
+        favBookList.clear()
+        favBookList.addAll(newBookList)
         notifyDataSetChanged()
     }
 

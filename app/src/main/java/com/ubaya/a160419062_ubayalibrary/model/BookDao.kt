@@ -17,4 +17,26 @@ interface BookDao {
     @Delete
     suspend fun deleteBooks(book: Book)
 
+    //Favorite
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertFav(vararg favorite: Favorite)
+
+    @Query("SELECT * FROM books B " +
+            "INNER JOIN favorite F ON F.bookId = B.id " +
+            "INNER JOIN account A ON A.idAccount = F.accountId")
+    suspend fun selectAllFavByUserId(): List<Book>
+
+    @Query("SELECT * FROM favorite")
+    suspend fun selectFavorite():List<Favorite>
+
+
+    //Accounnt
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAllAccount(vararg accounts: Account)
+
+    @Query("SELECT * FROM account WHERE idAccount=:id")
+    suspend fun selectAccount(id:String): Account
+
+    @Update
+    suspend fun updateAccount(account: Account)
 }

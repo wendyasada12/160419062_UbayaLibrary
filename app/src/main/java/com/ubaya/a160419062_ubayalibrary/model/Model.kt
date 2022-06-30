@@ -2,6 +2,7 @@ package com.ubaya.a160419062_ubayalibrary.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
@@ -26,24 +27,14 @@ data class Book(
     @ColumnInfo(name = "date")
     var date: String?,
     @ColumnInfo(name = "publisher")
-    var publisher: String?,
-    @ColumnInfo(name = "isLike")
-    var isLike: Boolean?,
-    @ColumnInfo(name = "isFavorite")
-    var isFavorite: Boolean?,
-    @ColumnInfo(name = "isWishlist")
-    var isWishlist: Boolean?,
-    @ColumnInfo(name = "isBlacklist")
-    var isBlackklist: Boolean?
+    var publisher: String?
 )
 
-@Entity(tableName = "wishlist")
-data class Wishlist(
-    @ColumnInfo(name = "comment")
-    var comment: String?,
+@Entity(tableName = "favorite")
+data class Favorite(
     @ColumnInfo(name = "accountId")
     var accountId: String?,
-    @ColumnInfo(name = "booktId")
+    @ColumnInfo(name = "bookId")
     var booktId: String
 ){
     @PrimaryKey(autoGenerate = true)
@@ -56,12 +47,12 @@ data class Account(
     var idAccount:String,
     @ColumnInfo(name = "name")
     var name: String?,
-    @ColumnInfo(name = "noTelp")
-    var noTelp: String?,
+    @ColumnInfo(name = "nrp")
+    var nrp: String?,
     @ColumnInfo(name = "email")
     var email: String?,
-    @ColumnInfo(name = "tglLahir")
-    var tglLahir: String?,
-    @ColumnInfo(name = "photoUrl")
-    var photoUrl: String?,
+    @ColumnInfo(name = "fakultas")
+    var fakultas: String?,
+    @ColumnInfo(name = "profilUrl")
+    var profilUrl: String?,
 )
