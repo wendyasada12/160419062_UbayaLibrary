@@ -41,7 +41,7 @@ class BlackListViewModel(application: Application) : AndroidViewModel(applicatio
                 BookDB::class.java, "newtododb"
             ).build()
 
-            bookBlackLiveData.value = db.bookDao().selectAllBooks()
+//            bookBlackLiveData.value = db.bookDao().selectAllBooks()
         }
 //        bookBlackLiveData.value
 //

@@ -14,6 +14,9 @@
             android:id="@+id/actionToBookDetail"
             app:destination="@id/bookDetailFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/actionToCreateBookFragment"
+            app:destination="@id/createBookFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookDetailFragment"
@@ -85,4 +88,9 @@
             android:name="bookId"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/createBookFragment"
+        android:name="com.ubaya.a160419062_ubayalibrary.view.CreateBookFragment"
+        android:label="fragment_create_book"
+        tools:layout="@layout/fragment_create_book" />
 </navigation>

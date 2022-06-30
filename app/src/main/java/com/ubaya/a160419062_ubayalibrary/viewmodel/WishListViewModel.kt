@@ -40,7 +40,7 @@ class WishListViewModel(application: Application) : AndroidViewModel(application
                 BookDB::class.java, "newtododb"
             ).build()
 
-            bookWishLiveData.value = db.bookDao().selectAllBooks()
+//            bookWishLiveData.value = db.bookDao().selectAllBooks()
         }
 //        bookWishLiveData.value
 //

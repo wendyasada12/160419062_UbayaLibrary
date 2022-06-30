@@ -40,7 +40,7 @@ class LikeListViewModel(application: Application) : AndroidViewModel(application
                 BookDB::class.java, "newtododb"
             ).build()
 
-            bookLikeLiveData.value = db.bookDao().selectAllBooks()
+//            bookLikeLiveData.value = db.bookDao().selectAllBooks()
         }
 //        bookLikeLiveData.value
 //

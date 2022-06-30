@@ -194,15 +194,14 @@
                         app:layout_constraintEnd_toEndOf="@+id/textPages"
                         app:layout_constraintStart_toStartOf="@+id/textPages"
                         app:layout_constraintTop_toBottomOf="@+id/textPages" />
-
                     <TextView
-                        android:id="@+id/textAuthor"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="@{books.author}"
-                        app:layout_constraintEnd_toEndOf="@+id/textBookName"
-                        app:layout_constraintStart_toStartOf="@+id/textBookName"
-                        app:layout_constraintTop_toBottomOf="@+id/textBookName" />
+                    android:id="@+id/textAuthor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{books.author}"
+                    app:layout_constraintEnd_toEndOf="@+id/textBookName"
+                    app:layout_constraintStart_toStartOf="@+id/textBookName"
+                    app:layout_constraintTop_toBottomOf="@+id/textBookName" />
 
                     <TextView
                         android:id="@+id/textView13"
@@ -292,6 +291,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:onClick="@{listener::onButtonAddReview}"
+                        android:tag="@{books.id}"
                         android:text="Add Review"
                         app:layout_constraintEnd_toEndOf="@+id/recyclerView"
                         app:layout_constraintStart_toStartOf="@+id/recyclerView"

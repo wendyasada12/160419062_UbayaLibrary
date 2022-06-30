@@ -29,7 +29,7 @@ class BookListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as AppCompatActivity).supportActionBar?.title = "Book Lists"
         viewModel= ViewModelProvider(this).get(ListViewModel::class.java)
 
         // ADD Book (default)
@@ -110,6 +110,11 @@ class BookListFragment : Fragment() {
             progressLoad.visibility= View.VISIBLE
             viewModel.refresh()
             refreshLayout.isRefreshing= false
+        }
+
+        fabAddBook.setOnClickListener{
+            val action = BookListFragmentDirections.actionToCreateBookFragment()
+            Navigation.findNavController(it).navigate(action)
         }
     }
 
