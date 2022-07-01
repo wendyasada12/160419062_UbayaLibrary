@@ -25,6 +25,7 @@ class ProfileFragment : Fragment() {
 
     companion object{
         val SHARED_PROFILE_ID="SHARED_PROFILE_ID"
+        val SHARED_PROFILE_NAME="SHARED_PROFILE_NAME"
     }
 
     override fun onCreateView(

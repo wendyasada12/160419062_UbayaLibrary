@@ -2,31 +2,18 @@ package com.ubaya.a160419062_ubayalibrary.viewmodel
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.room.Room
-import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.ubaya.a160419062_ubayalibrary.model.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
-import org.json.JSONObject
 
-class DetailViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
-    val bookLD = MutableLiveData<Book>()
-    val booksLoadError= MutableLiveData<Boolean>()
-    val loadingLD= MutableLiveData<Boolean>()
-    val TAG = "volleyTag"
-    private var queue: RequestQueue? = null
+class ReviewDetailViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
 
     val reviewsLD= MutableLiveData<List<Review>>()
     val reviewsLoadError= MutableLiveData<Boolean>()
@@ -34,14 +21,31 @@ class DetailViewModel(application: Application) : AndroidViewModel(application),
     val REVIEWTAG= "volleyTag"
     private var reviewsQueue: RequestQueue?= null
 
-    var fav = MutableLiveData<Boolean>()
-    var like = MutableLiveData<Boolean>()
-    var wish = MutableLiveData<Boolean>()
-    var black = MutableLiveData<Boolean>()
+    val bookLD = MutableLiveData<Book>()
+    val booksLoadError= MutableLiveData<Boolean>()
+    val loadingLD= MutableLiveData<Boolean>()
+    val TAG = "volleyTag"
+    private var queue: RequestQueue? = null
+
+    val profileLD= MutableLiveData<Profile>()
+    val profileLoadError= MutableLiveData<Boolean>()
+    val profileloadingLD= MutableLiveData<Boolean>()
+    val PROFILETAG= "volleyTag"
+    private var profileQueue: RequestQueue?= null
 
     private val job= Job()
 
-    fun fetch(bookID: String) {
+    fun addDataReview(list: List<Review>){
+        launch {
+            val db = Room.databaseBuilder(
+                getApplication(),
+                ReviewDB::class.java, "reviewdb"
+            ).build()
+            db.reviewDao().insertReviews(*list.toTypedArray())
+        }
+    }
+
+    fun fetchBook(bookID: String) {
         booksLoadError.value= false
         loadingLD.value= true
 
@@ -56,32 +60,34 @@ class DetailViewModel(application: Application) : AndroidViewModel(application),
         loadingLD.value= false
     }
 
-    fun refreshReview(booksId:String){
-        reviewsLoadError.value= false
-        reviewsloadingLD.value = true
-        launch {
-            val db = Room.databaseBuilder(
-                getApplication(),
-                ReviewDB::class.java, "reviewdb"
-            ).build()
+    fun fetchProfile(profileId:String){
+        profileLoadError.value= false
 
-            reviewsLD.value = db.reviewDao().selectReviewsBooks(booksId)
+        launch {
+            val db= Room.databaseBuilder(
+                getApplication(),
+                UserDB::class.java, "userdb"
+            ).build()
+            profileLD.value =  db.userDao().selectProfile(profileId)
+            Log.d("ProfileDetailViewModel:" , profileLD.value.toString())
         }
     }
 
-    fun addBooks(list: List<Book>){
+    fun fetchReviews(booksId:String){
         launch {
-            val db = Room.databaseBuilder(
+            val db= Room.databaseBuilder(
                 getApplication(),
-                BookDatabase::class.java, "bookdatabase"
+                ReviewDB::class.java, "reviewdb"
             ).build()
-            db.bookDao().insertBooks(*list.toTypedArray())
+            reviewsLD.value= db.reviewDao().selectReviewsBooks(booksId)
+            Log.d("review", reviewsLD.value.toString())
         }
     }
 
     override fun onCleared() {
         super.onCleared()
         queue?.cancelAll(TAG)
+        profileQueue?.cancelAll(PROFILETAG)
         reviewsQueue?.cancelAll(REVIEWTAG)
     }
 

@@ -278,7 +278,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/buttonBlackList" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView"
+                        android:id="@+id/recViewDetailBook"
                         android:layout_width="0dp"
                         android:layout_height="94dp"
                         android:layout_marginTop="8dp"
@@ -291,12 +291,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:onClick="@{listener::onButtonAddReview}"
                         android:tag="@{books.id}"
                         android:text="Add Review"
-                        app:layout_constraintEnd_toEndOf="@+id/recyclerView"
-                        app:layout_constraintStart_toStartOf="@+id/recyclerView"
-                        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+                        app:layout_constraintEnd_toEndOf="@+id/recViewDetailBook"
+                        app:layout_constraintStart_toStartOf="@+id/recViewDetailBook"
+                        app:layout_constraintTop_toBottomOf="@+id/recViewDetailBook" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </RelativeLayout>

@@ -41,6 +41,7 @@ class BookListAdapter(val bookList: ArrayList<Book>) : RecyclerView.Adapter<Book
     }
 
     override fun onButtonEditClick(v: View) {
-        TODO("Not yet implemented")
+        val action = BookListFragmentDirections.actionToEditBookFragment(v.tag.toString())
+        Navigation.findNavController(v).navigate(action)
     }
 }

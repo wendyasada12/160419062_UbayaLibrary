@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ubaya.a160419062_ubayalibrary.R
 import com.ubaya.a160419062_ubayalibrary.model.Book
 import com.ubaya.a160419062_ubayalibrary.viewmodel.ListViewModel
+import kotlinx.android.synthetic.main.book_list_item.*
 import kotlinx.android.synthetic.main.fragment_book_list.*
 
 class BookListFragment : Fragment() {

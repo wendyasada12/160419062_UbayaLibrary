@@ -17,6 +17,9 @@
         <action
             android:id="@+id/actionToCreateBookFragment"
             app:destination="@id/createBookFragment" />
+        <action
+            android:id="@+id/actionToEditBookFragment"
+            app:destination="@id/editBookFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookDetailFragment"
@@ -93,4 +96,13 @@
         android:name="com.ubaya.a160419062_ubayalibrary.view.CreateBookFragment"
         android:label="fragment_create_book"
         tools:layout="@layout/fragment_create_book" />
+    <fragment
+        android:id="@+id/editBookFragment"
+        android:name="com.ubaya.a160419062_ubayalibrary.view.EditBookFragment"
+        android:label="fragment_edit_book"
+        tools:layout="@layout/fragment_edit_book" >
+        <argument
+            android:name="bookID"
+            app:argType="string" />
+    </fragment>
 </navigation>

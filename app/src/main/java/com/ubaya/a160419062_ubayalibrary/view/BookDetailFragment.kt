@@ -1,6 +1,7 @@
 package com.ubaya.a160419062_ubayalibrary.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,8 @@ class BookDetailFragment : Fragment(), ButtonAddReviewClickListener{
     private lateinit var viewModel: DetailViewModel
     private lateinit var dataBinding: FragmentBookDetailBinding
 
+    private val bookReviewAdapter= BookReviewAdapter(arrayListOf())
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +44,9 @@ class BookDetailFragment : Fragment(), ButtonAddReviewClickListener{
             bookId= BookDetailFragmentArgs.fromBundle(requireArguments()).bookID
         }
         viewModel.fetch(bookId)
+        viewModel.refreshReview(bookId)
+        recViewDetailBook.layoutManager= LinearLayoutManager(context)
+        recViewDetailBook.adapter= bookReviewAdapter
 
 //        arguments?.let {
 //            val bookID = BookDetailFragmentArgs.fromBundle(requireArguments()).bookID
@@ -82,6 +88,10 @@ class BookDetailFragment : Fragment(), ButtonAddReviewClickListener{
 
             imageBookDetail.loadImage(book.image, progressBookPhotoDetail)
         }
+        viewModel.reviewsLD.observe(viewLifecycleOwner){
+            bookReviewAdapter.updateBookReviewList(it)
+        }
+
         viewModel.fav.observe(viewLifecycleOwner){
             if(it){
                 Toast.makeText(context, "Book add to favorite", Toast.LENGTH_SHORT).show()
@@ -117,6 +127,9 @@ class BookDetailFragment : Fragment(), ButtonAddReviewClickListener{
     }
 
     override fun onButtonAddReview(v: View) {
-
+        var bookId = v.tag.toString()
+        Log.d("testButton",bookId)
+        val action = BookDetailFragmentDirections.actionAddReviewFragment(bookId)
+        Navigation.findNavController(v).navigate(action)
     }
 }

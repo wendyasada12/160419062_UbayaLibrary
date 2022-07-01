@@ -1,33 +1,34 @@
 package com.ubaya.a160419062_ubayalibrary.view
 
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.ubaya.a160419062_ubayalibrary.R
+import com.ubaya.a160419062_ubayalibrary.databinding.FragmentAddReviewBinding
+import com.ubaya.a160419062_ubayalibrary.model.Review
+import com.ubaya.a160419062_ubayalibrary.viewmodel.ReviewDetailViewModel
+import kotlinx.android.synthetic.main.book_review_item.*
+import kotlinx.android.synthetic.main.fragment_add_review.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class AddReviewFragment : Fragment(){
+    private lateinit var viewModel:ReviewDetailViewModel
+    private lateinit var dataBinding: FragmentAddReviewBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AddReviewFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class AddReviewFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    companion object{
+        val SHARED_PROFILE_ID="SHARED_PROFILE_ID"
+        val SHARED_PROFILE_NAME="SHARED_PROFILE_NAME"
     }
 
     override fun onCreateView(
@@ -35,26 +36,62 @@ class AddReviewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_review, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentAddReviewBinding>(inflater, R.layout.fragment_add_review, container, false)
+        return dataBinding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddReviewFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddReviewFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        dataBinding.listener = this
+
+        viewModel= ViewModelProvider(this).get(ReviewDetailViewModel::class.java)
+        var bookId=""
+        if(arguments != null){
+            bookId= AddReviewFragmentArgs.fromBundle(requireArguments()).bookId
+        }
+        viewModel.fetchReviews(bookId)
+
+
+        observeViewModel()
+
+        buttonSaveCommentReview.setOnClickListener {
+            var sharedId = context?.packageName
+            var shared = context?.getSharedPreferences(sharedId, Context.MODE_PRIVATE)
+            var userId = shared?.getString(ProfileFragment.SHARED_PROFILE_ID, null)
+            var userName = shared?.getString(ProfileFragment.SHARED_PROFILE_NAME, null)
+
+            val current = LocalDateTime.now()
+
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val formatted = current.format(formatter)
+
+//            val tag = view.tag.toString().split(",")
+//            val userid = userId
+//            val username = userName
+            val bookid = "0006"
+            val userid = "1"
+            val username = "Wendy"
+
+            var review =
+                Review(username, formatted.toString(), textEdittCommentReview.text.toString(), userid, bookId)
+            viewModel.addDataReview(listOf(review))
+            Toast.makeText(view.context, "review success added!", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(it).popBackStack()
+
+        }
+
     }
+    private fun observeViewModel() {
+//        viewModel.bookLD.observe(viewLifecycleOwner){
+//
+//            var book= it
+//            dataBinding.book = book
+//        }
+//        viewModel.profileLD.observe(viewLifecycleOwner) {
+//
+//            var profil = it
+//            dataBinding.profile = profil
+//        }
+    }
+
 }

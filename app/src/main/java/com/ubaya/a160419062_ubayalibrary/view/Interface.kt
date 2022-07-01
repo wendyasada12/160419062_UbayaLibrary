@@ -29,3 +29,7 @@ interface ButtonBlackClickListener{
 interface ButtonAddReviewClickListener{
     fun onButtonAddReview(v: View)
 }
+
+interface ButtonSaveReviewClickListener{
+    fun onButtonSaveReview(v: View)
+}

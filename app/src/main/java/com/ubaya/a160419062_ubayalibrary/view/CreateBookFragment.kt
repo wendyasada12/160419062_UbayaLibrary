@@ -45,8 +45,8 @@ class CreateBookFragment : Fragment() {
                 textPages.text.toString(),
                 textLanguage.text.toString(),
                 textLink.text.toString(),
-                textPublisher.text.toString(),
-                textDateBook.text.toString())
+                textDateBook.text.toString(),
+                textPublisher.text.toString())
 
             val listBook = listOf(books)
             viewModel.addBooks(listBook)

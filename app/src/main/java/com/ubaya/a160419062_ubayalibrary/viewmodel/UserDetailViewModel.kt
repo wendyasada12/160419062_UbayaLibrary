@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.android.volley.RequestQueue
 import com.ubaya.a160419062_ubayalibrary.model.Profile
+import com.ubaya.a160419062_ubayalibrary.model.Review
+import com.ubaya.a160419062_ubayalibrary.model.ReviewDB
 import com.ubaya.a160419062_ubayalibrary.model.UserDB
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +24,12 @@ class UserDetailViewModel(application: Application) : AndroidViewModel(applicati
     private var profileQueue: RequestQueue?= null
 
     private val job= Job()
+
+    val reviewsLD= MutableLiveData<List<Review>>()
+    val reviewsLoadError= MutableLiveData<Boolean>()
+    val reviewsloadingLD= MutableLiveData<Boolean>()
+    val REVIEWTAG= "volleyTag"
+    private var reviewsQueue: RequestQueue?= null
 
 
 
@@ -41,6 +49,7 @@ class UserDetailViewModel(application: Application) : AndroidViewModel(applicati
     override fun onCleared() {
         super.onCleared()
         profileQueue?.cancelAll(PROFILETAG)
+        reviewsQueue?.cancelAll(REVIEWTAG)
     }
 
     override val coroutineContext: CoroutineContext

@@ -42,3 +42,20 @@ data class Profile(
     @ColumnInfo(name = "photoUrl")
     var photoUrl: String?,
 )
+
+@Entity(tableName = "review")
+data class Review(
+    @ColumnInfo(name = "name")
+    var name: String?,
+    @ColumnInfo(name = "date")
+    var date: String?,
+    @ColumnInfo(name = "comment")
+    var comment: String?,
+    @ColumnInfo(name = "profileId")
+    var profileId: String?,
+    @ColumnInfo(name = "bookId")
+    var bookId: String
+){
+    @PrimaryKey(autoGenerate = true)
+    var id:Int=0
+}
