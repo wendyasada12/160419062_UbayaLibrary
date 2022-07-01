@@ -29,28 +29,28 @@ class CreateBookFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-//        (activity as AppCompatActivity).supportActionBar?.title = "Add Book"
-//        buttonAddBook.setOnClickListener{
-//
-//            var radio =
-//                view.findViewById<RadioButton>(radioGroupCategory.checkedRadioButtonId)
-//            var books = Book(
-//                textIdBook.text.toString(),
-//                textName.text.toString(),
-//                radio.text.toString(),
-//                textDesc.text.toString(),
-//                textAuthor.text.toString(),
-//                textPages.text.toString(),
-//                textLanguage.text.toString(),
-//                textLink.text.toString(),
-//                textDateBook.text.toString(),
-//                textPublisher.text.toString())
-//
-//            val listBook = listOf(books)
-//            viewModel.addBooks(listBook)
-//            Toast.makeText(view.context, "Success Add Book", Toast.LENGTH_LONG).show()
-//            Navigation.findNavController(it).popBackStack()
-//        }
+        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+        (activity as AppCompatActivity).supportActionBar?.title = "Add Book"
+        buttonAddBook.setOnClickListener{
+
+            var radio =
+                view.findViewById<RadioButton>(radioGroupCategory.checkedRadioButtonId)
+            var books = Book(
+                textIdBook.text.toString(),
+                textName.text.toString(),
+                radio.text.toString(),
+                textDesc.text.toString(),
+                textAuthor.text.toString(),
+                textPages.text.toString(),
+                textLanguage.text.toString(),
+                textLink.text.toString(),
+                textDateBook.text.toString(),
+                textPublisher.text.toString())
+
+            val listBook = listOf(books)
+            viewModel.addBooks(listBook)
+            Toast.makeText(view.context, "Success Add Book", Toast.LENGTH_LONG).show()
+            Navigation.findNavController(it).popBackStack()
+        }
     }
 }
