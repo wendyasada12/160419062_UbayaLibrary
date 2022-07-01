@@ -13,7 +13,9 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.ubaya.a160419062_ubayalibrary.model.*
+import com.ubaya.a160419062_ubayalibrary.model.Book
+import com.ubaya.a160419062_ubayalibrary.model.BookDB
+import com.ubaya.a160419062_ubayalibrary.model.BookDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

@@ -7,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.ubaya.a160419062_ubayalibrary.R
-import com.ubaya.a160419062_ubayalibrary.databinding.FragmentAddReviewBinding
 import com.ubaya.a160419062_ubayalibrary.model.Book
 import com.ubaya.a160419062_ubayalibrary.viewmodel.DetailViewModel
-import kotlinx.android.synthetic.main.book_list_item.*
 import kotlinx.android.synthetic.main.fragment_create_book.*
 
 
@@ -31,7 +30,7 @@ class CreateBookFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-
+        (activity as AppCompatActivity).supportActionBar?.title = "Add Book"
         buttonAddBook.setOnClickListener{
 
             var radio =

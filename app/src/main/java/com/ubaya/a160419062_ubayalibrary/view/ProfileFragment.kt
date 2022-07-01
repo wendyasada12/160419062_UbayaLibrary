@@ -55,6 +55,8 @@ class ProfileFragment : Fragment() {
 
         observeViewModel()
 
+        (activity as AppCompatActivity).supportActionBar?.title = "Profile Tab"
+
     }
 
     private fun observeViewModel() {
